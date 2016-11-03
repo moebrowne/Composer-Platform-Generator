@@ -1,5 +1,7 @@
 <?php
 
+$packageBlackList = json_decode(file_get_contents('package-blacklist.json'));
+
 $composerJSONPath = 'path/to/composer.json';
 
 // Get the list of packages in the current platform
@@ -9,6 +11,12 @@ $packages = [];
 
 foreach ($platformLineArray as $platformLine) {
     preg_match('/^(?<name>[^ ]+)[ ]+(?<version>[^ ]+)/', $platformLine, $matches);
+
+    // Check if this package is blacklisted
+    if (in_array($matches['name'], $packageBlackList)) {
+        continue;
+    }
+
     $packages[$matches['name']] = $matches['version'];
 }
 
