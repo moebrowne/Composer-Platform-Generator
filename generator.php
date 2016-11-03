@@ -20,6 +20,9 @@ foreach ($platformLineArray as $platformLine) {
     $packages[$matches['name']] = $matches['version'];
 }
 
+// Sort the packages for readability
+ksort($packages, SORT_NATURAL);
+
 $composerArray = json_decode(file_get_contents($composerJSONPath), true);
 
 // Add the new key to the composer JSON
