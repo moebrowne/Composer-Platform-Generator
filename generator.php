@@ -1,5 +1,7 @@
 <?php
 
+$composerJSONPath = 'path/to/composer.json';
+
 // Get the list of packages in the current platform
 exec('composer show -p', $platformLineArray, $returnCode);
 
@@ -10,5 +12,9 @@ foreach ($platformLineArray as $platformLine) {
     $packages[$matches['name']] = $matches['version'];
 }
 
-var_dump(json_encode($packages));
+$composerArray = json_decode(file_get_contents($composerJSONPath), true);
 
+// Add the new key to the composer JSON
+$composerArray['platform'] = $packages;
+
+file_put_contents($composerJSONPath, json_encode($composerArray));
