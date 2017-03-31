@@ -1,3 +1,3 @@
 # Composer Platform Generator
 
-Auto generates the platform section of a composer.json from the current platform
+A little helper to automatically populate the `platform` array in a Composer JSON
