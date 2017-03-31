@@ -28,4 +28,4 @@ $composerArray = json_decode(file_get_contents($composerJSONPath), true);
 // Add the new key to the composer JSON
 $composerArray['platform'] = $packages;
 
-file_put_contents($composerJSONPath, json_encode($composerArray));
+file_put_contents($composerJSONPath, json_encode($composerArray, JSON_PRETTY_PRINT));
