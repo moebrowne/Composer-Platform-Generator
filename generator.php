@@ -7,6 +7,10 @@ $composerJSONPath = $argc === 1 ? $argv[1]:null;
 // Get the list of packages in the current platform
 exec('composer show -p', $platformLineArray, $returnCode);
 
+if ($returnCode !== 0) {
+    throw new Exception('Failed to run Composer, is it installed?');
+}
+
 $packages = [];
 
 foreach ($platformLineArray as $platformLine) {
