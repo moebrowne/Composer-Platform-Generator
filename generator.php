@@ -34,7 +34,7 @@ if ($composerJSONPath === null) {
         ],
     ];
 
-    echo json_encode($composerArray, JSON_PRETTY_PRINT);
+    echo json_encode($composerArray, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
     echo PHP_EOL;
 
     exit;
@@ -49,4 +49,4 @@ if (array_key_exists('config', $composerArray) === false) {
 
 $composerArray['config']['platform'] = $packages;
 
-file_put_contents($composerJSONPath, json_encode($composerArray, JSON_PRETTY_PRINT));
+file_put_contents($composerJSONPath, json_encode($composerArray, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
