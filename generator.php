@@ -31,6 +31,7 @@ if ($composerJSONPath === null) {
     $composerArray = [];
     $composerArray['platform'] = $packages;
     echo json_encode($composerArray, JSON_PRETTY_PRINT);
+    echo PHP_EOL;
 
     exit;
 }
