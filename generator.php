@@ -2,7 +2,7 @@
 
 $packageBlackList = json_decode(file_get_contents('package-blacklist.json'));
 
-$composerJSONPath = $argc === 1 ? $argv[1]:null;
+$composerJSONPath = $argc === 2 ? $argv[1]:null;
 
 // Get the list of packages in the current platform
 exec('composer show -p', $platformLineArray, $returnCode);
