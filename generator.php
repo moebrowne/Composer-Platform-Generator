@@ -40,6 +40,14 @@ if ($composerJSONPath === null) {
     exit;
 }
 
+if (file_exists($composerJSONPath) === false) {
+    throw new Exception('Unable to locate composer.json');
+}
+
+if (is_writable($composerJSONPath) === false) {
+    throw new Exception('composer.json is not writable');
+}
+
 $composerArray = json_decode(file_get_contents($composerJSONPath), true);
 
 // Add the new key to the composer JSON
