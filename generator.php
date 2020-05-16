@@ -1,3 +1,4 @@
+#!/usr/bin/env php
 <?php
 
 $packageBlackList = json_decode(file_get_contents('package-blacklist.json'));
