@@ -28,8 +28,12 @@ foreach ($platformLineArray as $platformLine) {
 ksort($packages, SORT_NATURAL);
 
 if ($composerJSONPath === null) {
-    $composerArray = [];
-    $composerArray['platform'] = $packages;
+    $composerArray = [
+        'config' => [
+            'platform' => $packages,
+        ],
+    ];
+
     echo json_encode($composerArray, JSON_PRETTY_PRINT);
     echo PHP_EOL;
 
@@ -39,6 +43,10 @@ if ($composerJSONPath === null) {
 $composerArray = json_decode(file_get_contents($composerJSONPath), true);
 
 // Add the new key to the composer JSON
-$composerArray['platform'] = $packages;
+if (array_key_exists('config', $composerArray) === false) {
+    $composerArray['config'] = [];
+}
+
+$composerArray['config']['platform'] = $packages;
 
 file_put_contents($composerJSONPath, json_encode($composerArray, JSON_PRETTY_PRINT));
