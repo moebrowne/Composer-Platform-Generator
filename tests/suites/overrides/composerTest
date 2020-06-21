@@ -1,0 +1,8 @@
+#!/bin/bash
+
+echo "ext-Zend-OPcache     7.2.30   Package overridden via config.platform (actual: 7.2.31)
+ext-zip              1.15.4   Package overridden via config.platform (same as actual)
+ext-zlib             7.2.30   Package overridden via config.platform (actual: 7.2.31)
+lib-libxml           2.9.10   Package overridden via config.platform (same as actual)
+lib-openssl          1.1.1.4  Package overridden via config.platform (actual: 1.1.1.7)
+php                  7.2.30   Package overridden via config.platform (actual: 7.2.31)"

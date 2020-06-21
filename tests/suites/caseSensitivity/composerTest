@@ -1,0 +1,5 @@
+#!/bin/bash
+
+echo "ext-Zend-OPcache     7.2.31   The Zend OPcache PHP extension (actual version: 7.2.31-1+ubuntu16.04.1+deb.sury.org+1)
+ext-CaseSensitive     7.2.30   Package overridden via config.platform (actual: 7.2.31)
+ext-casesensitive     7.2.30   Package overridden via config.platform (actual: 7.2.31)"
