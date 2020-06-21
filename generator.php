@@ -17,7 +17,7 @@ if ($returnCode !== 0) {
 $packages = [];
 
 foreach ($platformLineArray as $platformLine) {
-    preg_match('/^(?<name>[^ ]+)[ ]+(?<version>[^ ]+)[^(]+(?:|Package overridden via config\.platform \((?:same as actual|actual: (?<versionActual>[^)]+))\))$/', $platformLine, $matches);
+    preg_match('/^(?<name>[^ ]+)[ ]+(?<version>[^ ]+)[^(]+(|(\(actual version: [^)]+\))|(Package overridden via config\.platform \((?:(?:same as actual)|(?:actual: (?<versionActual>[^)]+)))\)))$/', $platformLine, $matches);
 
     // Check if this package is blacklisted
     if (in_array($matches['name'], $packageBlackList)) {
