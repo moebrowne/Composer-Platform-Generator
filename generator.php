@@ -15,14 +15,20 @@ if ($returnCode !== 0) {
 $packages = [];
 
 foreach ($platformLineArray as $platformLine) {
-    preg_match('/^(?<name>[^ ]+)[ ]+(?<version>[^ ]+)/', $platformLine, $matches);
+    preg_match('/^(?<name>[^ ]+)[ ]+(?<version>[^ ]+)[^(]+(?:|Package overridden via config\.platform \((?:same as actual|actual: (?<versionActual>[^)]+))\))$/', $platformLine, $matches);
 
     // Check if this package is blacklisted
     if (in_array($matches['name'], $packageBlackList)) {
         continue;
     }
 
-    $packages[$matches['name']] = $matches['version'];
+    if (array_key_exists('versionActual', $matches)) {
+        $version = $matches['versionActual'];
+    } else {
+        $version = $matches['version'];
+    }
+
+    $packages[$matches['name']] = $version;
 }
 
 // Sort the packages for readability
