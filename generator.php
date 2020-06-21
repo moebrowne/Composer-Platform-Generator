@@ -3,7 +3,7 @@
 
 $composerPath = getenv('COMPOSER_EXEC') ?: 'composer';
 
-$packageBlackList = json_decode(file_get_contents('package-blacklist.json'));
+$packageBlackList = json_decode(file_get_contents(__DIR__ . '/package-blacklist.json'));
 
 $composerJSONPath = $argc === 2 ? $argv[1]:null;
 
